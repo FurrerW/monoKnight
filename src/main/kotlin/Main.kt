@@ -1,23 +1,27 @@
-package com.monoknight
-
-var currentHealth = player.currentHealth
-
+package org.walterfurrer
 
 fun main() {
-    gameStart()
+    gamePrologue()
+    gameEnding()
 }
 
-fun gameStart() {
-    println("\nWelcome to monoKnight!")
-    println("\nYou play as the brave knight, ${player.name}. You are currently patrolling a cave near the kingdom of " +
-            "Helvetica.")
-    println("Equipped with a sword, shield, and a torch to light the way, you continue your patrol until you hear a " +
-            "cry from deeper within the cave...")
-    println("\nPress Enter to continue...")
-    readln()
-    goblinBattle()
-    println("Just as you are resting from your battle, you hear the clanking of armor and the sound of footsteps " +
-            "echoing through the cave.\nPrepare yourself, brave knight!")
+fun gamePrologue() {
+    println("Welcome to the Kingdom of Helvetica, where fonts of all types have prospered under King Garamond for a " +
+            "number of years.")
+    println("Recently, however, there have been murmurings of unrest amongst the population.")
+    println("You play as the head of the monoKnights, Fira. A long trusted sword of the King. You receive word of a " +
+            "potential hideout for those that would pose a threat to the throne amongst the cave system just outside " +
+            "of Helvetica.")
+    println("We start our adventure as Fira is exploring this cave. Equipped with a sword and a torch to light the " +
+            "way, you make your way deeper into the cave, but haven't seen anything of note yet. That is until you " +
+            "turn the corner and eye a Goblin 20ft ahead of you. You draw your sword and get closer, ready to strike.")
+}
+
+fun gameEnding() {
+    println("After defeating Wingdings, you look around the camp and find a note detailing a planned attack on the " +
+            "King this evening! You make haste for the King's side and pray you aren't too late...")
+    println("That's it! Thanks for playing this stupid little project I made so I can practice some Kotlin.")
+    return
 }
 
 fun gameOver() {
@@ -25,24 +29,8 @@ fun gameOver() {
     println("Would you like to play again? (yes/no)")
     val playAgain = readln()
     if (playAgain == "yes") {
-        gameStart()
+        gamePrologue()
     } else {
         println("Thank you for playing monoKnight!")
-    }
-}
-
-fun goblinBattle() {
-    println("\nA Goblin appears from the shadows!")
-    while (goblin.health > 0 && currentHealth > 0) {
-        player.playerOptions()
-        goblin.goblinTurn()
-        println("Your health: ${currentHealth}/${player.totalHealth}")
-    }
-    if (goblin.health <= 0) {
-        println("\nYou have defeated the Goblin!")
-        player.levelUp()
-    }
-    else {
-        gameOver()
     }
 }
